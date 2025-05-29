@@ -1,0 +1,5 @@
+{
+  "name": "Queue Management System",
+  "description": "A web application for managing customer queues, issuing tickets, calling numbers with voice announcements, and handling skipped/recalled tickets.",
+  "requestFramePermissions": []
+}

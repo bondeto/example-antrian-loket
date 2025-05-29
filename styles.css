@@ -1,0 +1,144 @@
+@keyframes pulseFast {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.animate-pulseFast {
+  animation: pulseFast 1.5s infinite;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+  background-color: #0f172a; /* bg-slate-900 */
+  color: #cbd5e1; /* text-slate-300 */
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1e293b; /* slate-800 */
+}
+::-webkit-scrollbar-thumb {
+  background: #38bdf8; /* sky-500 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9; /* sky-600 */
+}
+
+
+/* Print specific styles */
+@media print {
+  body, html {
+    background-color: #fff !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 10pt; /* Base font size for print */
+  }
+
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Show only the printable area and its children */
+  #ticket-to-print, #ticket-to-print * {
+    visibility: visible;
+  }
+
+  /* Position the printable area at the top of the page */
+  #ticket-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; /* Or a specific width like 76mm for thermal printers */
+    margin: 0;
+    padding: 5mm; /* Some padding for the content */
+    box-sizing: border-box;
+  }
+  
+  .fixed.inset-0 { /* The modal overlay */
+    position: static !important;
+    background-color: transparent !important;
+    display: block !important; /* Ensure it takes up space for the ticket-to-print content */
+  }
+
+  .bg-slate-800.p-6.md\:p-8 { /* The modal content box */
+    box-shadow: none !important;
+    border: none !important; /* A light border for definition if desired */
+    width: 100% !important; /* Use 100% of the #ticket-to-print area */
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fff !important;
+  }
+
+  /* Force text colors to black for elements within the printable area */
+  #ticket-to-print h2, 
+  #ticket-to-print p, 
+  #ticket-to-print div,
+  #ticket-to-print span {
+    color: #000 !important;
+    background-color: transparent !important; /* Ensure no colored backgrounds remain */
+  }
+  
+  /* Specifically override Tailwind color classes if they are too strong */
+  #ticket-to-print .text-sky-400, 
+  #ticket-to-print .text-white, 
+  #ticket-to-print .text-slate-300, 
+  #ticket-to-print .text-slate-400,
+  #ticket-to-print .text-slate-500 {
+    color: #000 !important;
+  }
+
+  #ticket-to-print .border-sky-500 { /* QR Code border */
+    border-color: #000 !important;
+  }
+   #ticket-to-print .border-dashed.border-slate-600 {
+    border-color: #aaa !important;
+   }
+
+  /* Hide elements not meant for printing */
+  .no-print, .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Show elements meant only for printing */
+  .print-only {
+    display: block !important; /* Or table-row, etc., depending on the element */
+    visibility: visible !important;
+  }
+
+  /* Adjust image sizes for print if necessary */
+  #ticket-to-print img {
+     max-width: 40mm !important; /* Example size for QR on thermal paper */
+     height: auto !important;
+  }
+
+  /* Ensure font sizes are practical for print */
+  #ticket-to-print .print\:text-lg { font-size: 14pt !important; }
+  #ticket-to-print .print\:text-xs { font-size: 8pt !important; }
+  #ticket-to-print .print\:text-sm { font-size: 10pt !important; }
+  #ticket-to-print .print\:text-4xl { font-size: 28pt !important; font-weight: bold; }
+  #ticket-to-print .print\:mb-1 { margin-bottom: 0.25rem !important; }
+  #ticket-to-print .print\:mb-0\.5 { margin-bottom: 0.125rem !important; }
+  #ticket-to-print .print\:my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+  #ticket-to-print .print\:mt-1 { margin-top: 0.25rem !important; }
+  #ticket-to-print .print\:w-28 { width: 28mm !important; } /* Adjust based on QR code size */
+  #ticket-to-print .print\:h-28 { height: 28mm !important; }
+  #ticket-to-print .print\:border-2 { border-width: 1px !important; } /* Thinner border for print */
+  #ticket-to-print .print\:p-2 { padding: 2mm !important;}
+
+  @page {
+    size: 80mm auto; /* Adjust for typical thermal printer roll width, auto height */
+    margin: 3mm; /* Minimal margin */
+  }
+}
