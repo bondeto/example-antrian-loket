@@ -117,3 +117,4 @@ To create an optimized build of the application for deployment:
 ```
 
 For more details on the application's architecture and features, please refer to `DOCUMENTATION.md`.
+# example-antrian-loket
