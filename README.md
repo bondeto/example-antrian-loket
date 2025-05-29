@@ -1,5 +1,5 @@
 
-# QueuePro System
+# Queue System
 
 QueuePro System is a web application for managing customer queues. It allows clients to get a numbered ticket for various services, and administrators to call, serve, skip, or recall tickets. The system features voice announcements for called tickets and an option to print tickets.
 
